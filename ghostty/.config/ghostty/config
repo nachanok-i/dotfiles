@@ -1,0 +1,9 @@
+# Font configuration  
+font-family = "JetBrainsMono Nerd Font, Ayuthaya"  
+font-family-bold = "JetBrainsMono Nerd Font Bold"  
+font-family-italic = "JetBrainsMono Nerd Font Italic"  
+font-family-bold-italic = "JetBrainsMono Nerd Font Bold Italic"  
+font-feature = "calt"  
+font-feature = "liga"  
+font-size = 14  
+font-thicken = true  
