@@ -114,3 +114,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
+
+# Aliases for different Neovim distributions
+alias lzv="NVIM_APPNAME=lazyvim nvim"
+alias nvc="NVIM_APPNAME=nvchad nvim"
+alias atv="NVIM_APPNAME=astronvim nvim"
