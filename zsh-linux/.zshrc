@@ -103,6 +103,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+# Aliases for different Neovim distributions
+alias lzv="NVIM_APPNAME=lazyvim nvim"
+alias nvc="NVIM_APPNAME=nvchad nvim"
+alias atv="NVIM_APPNAME=astronvim nvim"
+alias lzg="lazygit"
+
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 export NVM_DIR="$HOME/.nvm"
