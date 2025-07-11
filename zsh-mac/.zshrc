@@ -119,3 +119,4 @@ export COLORTERM=truecolor
 alias lzv="NVIM_APPNAME=lazyvim nvim"
 alias nvc="NVIM_APPNAME=nvchad nvim"
 alias atv="NVIM_APPNAME=astronvim nvim"
+alias lzg="lazygit"
