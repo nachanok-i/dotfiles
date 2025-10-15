@@ -73,7 +73,7 @@ ZSH_THEME="agnoster"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zshrc.pre-oh-my-zsh 
+# source $HOME/.zshrc.pre-oh-my-zsh 
 
 # User configuration
 
@@ -103,9 +103,20 @@ source $HOME/.zshrc.pre-oh-my-zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export NVM_DIR="$HOME/.nvm"  
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# export NVM_DIR="$HOME/.nvm"  
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export TERM=xterm-256color
 export COLORTERM=truecolor
+
+# Aliases for different Neovim distributions
+alias lzv="NVIM_APPNAME=lazyvim nvim"
+alias nvc="NVIM_APPNAME=nvchad nvim"
+alias atv="NVIM_APPNAME=astronvim nvim"
+alias lzg="lazygit"

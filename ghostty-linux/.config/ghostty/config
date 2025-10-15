@@ -1,0 +1,7 @@
+# Font configuration  
+font-family = "JetBrainsMono Nerd Font"
+
+font-feature = "calt"  
+font-feature = "liga"  
+# font-size = 12  
+# font-thicken = true  
