@@ -120,3 +120,11 @@ alias lzv="NVIM_APPNAME=lazyvim nvim"
 alias nvc="NVIM_APPNAME=nvchad nvim"
 alias atv="NVIM_APPNAME=astronvim nvim"
 alias lzg="lazygit"
+# Kiro command alias
+alias kiro="open -a Kiro"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export PATH=/Users/nachanok/.local/bin:$PATH
+
+# Added by Antigravity
+export PATH="/Users/nachanok/.antigravity/antigravity/bin:$PATH"
