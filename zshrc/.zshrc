@@ -105,6 +105,45 @@ fi
 source ${ZIM_HOME}/init.zsh
 # }}} End configuration added by Zim Framework install
 
+# ─── Prompt Profiles ─────────────────────────────────────────────
+autoload -Uz vcs_info add-zsh-hook
+setopt PROMPT_SUBST
+
+function _prompt_precmd() { vcs_info }
+add-zsh-hook precmd _prompt_precmd
+
+# Personal: Catppuccin Mocha — two-line, full path, git, duration
+function personal-mode() {
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr   '%F{#a6e3a1}+%f'
+  zstyle ':vcs_info:git:*' unstagedstr '%F{#f38ba8}!%f'
+  zstyle ':vcs_info:git:*' formats       ' %F{#585b70}[%f%F{#cba6f7}%b%f%c%u%F{#585b70}]%f'
+  zstyle ':vcs_info:git:*' actionformats ' %F{#585b70}[%f%F{#cba6f7}%b%F{#f38ba8}|%a%f%c%u%F{#585b70}]%f'
+  zstyle ':zim:duration-info' threshold 1
+  zstyle ':zim:duration-info' format ' %F{#7f849c}⏱ %d%f'
+
+  PROMPT='%F{#7f849c}╭─%f %F{#cba6f7}%n%f%F{#7f849c}@%f%F{#fab387}%m%f %F{#89b4fa}%~%f${vcs_info_msg_0_}${duration_info}
+%F{#7f849c}╰─%f %(?.%F{#a6e3a1}❯%f.%F{#f38ba8}❯%f) '
+  RPROMPT=''
+}
+
+# AI: minimal, robbyrussell-style — dirname only, branch, dirty flag
+function ai-mode() {
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr   ' %F{red}✗%f'
+  zstyle ':vcs_info:git:*' unstagedstr ' %F{red}✗%f'
+  zstyle ':vcs_info:git:*' formats       ' %F{yellow}git:(%F{red}%b%F{yellow})%f%c%u'
+  zstyle ':vcs_info:git:*' actionformats ' %F{yellow}git:(%F{red}%b%F{yellow}|%F{red}%a%F{yellow})%f%c%u'
+  zstyle ':zim:duration-info' threshold 999999
+
+  PROMPT='%(?.%F{green}➜%f.%F{red}➜%f)  %F{cyan}%1~%f${vcs_info_msg_0_} '
+  RPROMPT=''
+}
+
+personal-mode
+
 # Aliases for different Neovim distributions
 alias lzv="NVIM_APPNAME=lazyvim nvim"
 alias nvc="NVIM_APPNAME=nvchad nvim"
