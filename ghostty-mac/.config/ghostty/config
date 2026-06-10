@@ -1,9 +1,11 @@
-# Font configuration  
-font-family = "JetBrainsMono Nerd Font, Ayuthaya"  
-font-family-bold = "JetBrainsMono Nerd Font Bold"  
-font-family-italic = "JetBrainsMono Nerd Font Italic"  
-font-family-bold-italic = "JetBrainsMono Nerd Font Bold Italic"  
-font-feature = "calt"  
-font-feature = "liga"  
-font-size = 14  
-font-thicken = true  
+# Font configuration
+# Primary font (Latin + powerline/icon glyphs). Bold/italic faces are
+# auto-selected from this family — no need for font-family-bold/italic.
+font-family = "JetBrainsMono Nerd Font"
+# Fallback for glyphs missing in the primary (e.g. Thai) -> Ayuthaya.
+# Fallbacks MUST be separate font-family lines, not comma-separated.
+font-family = "Ayuthaya"
+font-feature = "calt"
+font-feature = "liga"
+font-size = 14
+font-thicken = true
