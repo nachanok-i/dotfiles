@@ -1,0 +1,67 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_SPAWN_BACKEND": "tmux"
+  },
+  "permissions": {
+    "allow": [
+      "Read(~/Documents/obsidian/dev-knowledge/**)",
+      "Write(~/Documents/obsidian/dev-knowledge/**)",
+      "Read(~/Documents/obsidian/invx-wiki/**)",
+      "Write(~/Documents/obsidian/invx-wiki/**)"
+    ]
+  },
+  "model": "claude-fable-5[1m]",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/macbook/.claude/hooks/git-clone-wiki-context.sh\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "TOKENBAR_PROVIDER=Claude TOKENBAR_EVENT=notification /Users/macbook/.tokenbar/agent-signals/tokenbar-notify.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "TOKENBAR_PROVIDER=Claude TOKENBAR_EVENT=stop /Users/macbook/.tokenbar/agent-signals/tokenbar-notify.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "caveman@caveman": false,
+    "frontend-design@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "theme": "dark",
+  "preferredNotifChannel": "ghostty",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}
