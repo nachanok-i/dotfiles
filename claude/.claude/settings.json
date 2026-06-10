@@ -12,6 +12,10 @@
     ]
   },
   "model": "claude-fable-5[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/macbook/.claude/statusline.sh"
+  },
   "hooks": {
     "UserPromptSubmit": [
       {
