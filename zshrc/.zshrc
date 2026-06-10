@@ -153,3 +153,8 @@ alias lzg="lazygit"
 export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+export GPG_TTY=$(tty)
+export FOUNDER_WIKI="$HOME/Documents/founder-wiki"
