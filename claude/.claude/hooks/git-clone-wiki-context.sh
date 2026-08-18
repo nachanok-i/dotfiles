@@ -1,10 +1,11 @@
 #!/bin/bash
 # Injects knowledge-wiki context when a Claude session runs inside ~/Documents/git_clone/.
 # UserPromptSubmit hook — stdout becomes context (registered in ~/.claude/settings.json as
-# bash ~/.claude/hooks/git-clone-wiki-context.sh). Lives in dotfiles/claude and is stowed
-# to ~/.claude/hooks/ — edit it here in the dotfiles repo.
+# bash ~/.claude/hooks/git-clone-wiki-context.sh). This is the versioned nightly copy; the
+# live copy is ~/.claude/hooks/git-clone-wiki-context.sh — edit here, then copy there.
 
-GIT_CLONE_ROOT="$HOME/Documents/git_clone"
+# Folder holding your service repos — set by the installer (FOUNDER_GIT_CLONE); sensible default.
+GIT_CLONE_ROOT="${FOUNDER_GIT_CLONE:-$HOME/Documents/git_clone}"
 [[ "$PWD" == "$GIT_CLONE_ROOT"* ]] || exit 0
 
 SERVICE="$(basename "$(git rev-parse --show-toplevel 2>/dev/null || echo "$PWD")")"

@@ -5,9 +5,13 @@
 
 input=$(cat)
 
-IFS=$'\t' read -r model cwd ctx added removed <<<"$(jq -r '[
+# optional fields use "-" as an absent-sentinel: an empty @tsv field would be
+# collapsed by `read` (tab is IFS whitespace) and shift every later value
+IFS=$'\t' read -r model cwd proj effort ctx added removed <<<"$(jq -r '[
   (.model.display_name // "Claude"),
-  (.workspace.current_dir // .cwd // ""),
+  (.workspace.current_dir // .cwd // "-"),
+  (.workspace.project_dir // "-"),
+  (.effort.level // "-"),
   (.context_window.used_percentage // 0),
   (.cost.total_lines_added // 0),
   (.cost.total_lines_removed // 0)
@@ -24,6 +28,7 @@ peach="250;179;135"
 yellow="249;226;175"
 green="166;227;161"
 lavender="180;190;254"
+sapphire="116;199;236"
 surface1="69;71;90"
 dark_green="64;160;43"
 dark_red="210;15;57"
@@ -50,6 +55,11 @@ fg() { printf '\e[38;2;%sm' "$1"; }
 seg "$red"   "$crust" "✦ ${model}"
 seg "$peach" "$crust" "${cwd/#$HOME/~}"
 
+# when the session has wandered away from the project root, show where home is
+if [ "$proj" != "-" ] && [ "$proj" != "$cwd" ]; then
+  seg "$sapphire" "$crust" "⌂ ${proj/#$HOME/~}"
+fi
+
 if branch=$(git -C "$cwd" branch --show-current 2>/dev/null) && [ -n "$branch" ]; then
   flags=""
   if ! git -C "$cwd" diff --cached --quiet 2>/dev/null; then flags+="$(fg "$dark_green")+"; fi
@@ -60,6 +70,10 @@ fi
 # lines changed: dark surface background, green for added / red for removed
 if [ "${added:-0}" != "0" ] || [ "${removed:-0}" != "0" ]; then
   seg "$surface1" "$green" "+${added}$(fg "$text")/$(fg "$red")-${removed}"
+fi
+
+if [ "$effort" != "-" ]; then
+  seg "$green" "$crust" "⚡${effort}"
 fi
 
 seg "$lavender" "$crust" "◐ ${ctx}%"
