@@ -31,6 +31,10 @@ Configs that differ between macOS and Linux are split into per-OS packages (e.g.
 
 The `claude` package backs up only the durable parts of `~/.claude`: `settings.json` and `hooks/`. Runtime state (sessions, history, projects, cache, plugins) is deliberately excluded, and `~/.claude/commands` / `~/.claude/skills` are symlinks managed by the separate `founder-skill` repo — don't add them here.
 
+## cmux package
+
+The `cmux` package tracks `~/.config/cmux/cmux.json` (the cmux terminal's JSONC config). cmux's terminal engine **is** Ghostty and reads the same `~/.config/ghostty/config` for terminal appearance (font, theme, transparency, blur), so the terminal styling is shared with the `ghostty-mac` package — there is no separate font/theme to set in `cmux.json`. cmux's color theme is left at `inherit` so it follows the Ghostty config rather than overriding it. After editing either file, run `cmux reload-config` (reloads both, no restart). Don't commit secrets here: a populated `cmux.json` can hold `socketPassword`.
+
 ## Multiple Neovim distributions
 
 Three Neovim distros coexist via `NVIM_APPNAME`, each in its own package (`lazyvim`, `nvchad`, `astronvim`), with shell aliases defined in `.zshrc`:
