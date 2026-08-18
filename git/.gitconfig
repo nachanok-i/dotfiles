@@ -1,3 +1,9 @@
 [user]
 	name = Nachanok Issarapruk
 	email = nachanok.issarapruk@accordinnovations.tech
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

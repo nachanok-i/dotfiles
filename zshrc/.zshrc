@@ -157,4 +157,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.jenv/bin:$PATH"
   eval "$(jenv init -)"
 export GPG_TTY=$(tty)
-export FOUNDER_WIKI="$HOME/Documents/founder-wiki"
+# >>> founder-skill >>>
+export FOUNDER_WIKI="/Users/macbook/Documents/founder-wiki"
+export FOUNDER_GIT_CLONE="/Users/macbook/Documents/git_clone"
+# <<< founder-skill <<<
